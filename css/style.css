@@ -52,6 +52,7 @@ h2 {
   background-color: white;
   margin-left: 1%;
   border-radius: 0px;
+  border: 0;
 }
 
 #input-btn {
@@ -88,7 +89,7 @@ h2 {
   cursor: pointer;
 }
 
-.card-container img {
+.card-image {
   width: 175px;
   height: 175px;
 }

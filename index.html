@@ -25,20 +25,17 @@
         </button>
       </div>
 
-      <div id="flex-container">
-        <!-- <div class="card-container">
-          <img
-            src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
-            alt="Avatar"
-          />
-          <div class="card-info">
-            <p>Pokemon <br/> Type</p>
-          </div>
-        </div> -->
-      </div>
+      <div id="flex-container"></div>
     </div>
 
     <div class="more-info"></div>
+
+    <template data-pokemon-template>
+      <div class="card-container">
+        <img class="card-image" data-image />
+        <div class="card-info" data-info></div>
+      </div>
+    </template>
 
     <!-- Load Javascript -->
     <script src="./js/main.js" defer></script>
