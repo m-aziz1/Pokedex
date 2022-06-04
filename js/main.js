@@ -26,6 +26,7 @@ function datafromURL(address) {
           pokemon["name"]["english"]
         }<br/>${pokemon["type"].join(", ")}</p>`;
         card.addEventListener("click", () => alert(pokemon["name"]["english"]));
+        
         cardsContainer.appendChild(card);
 
         return {

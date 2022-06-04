@@ -12,17 +12,22 @@
   <body>
     <div id="favourite-list">
       <h2>My List</h2>
+      <p>Drag and Drop</p>
     </div>
 
     <div id="content-body">
       <div id="header">
-        <input type="search" id="input-bar" placeholder="Find a pokemon..." />
-        <button id="input-btn">
+        <input
+          type="search"
+          id="input-bar"
+          placeholder="Search by name, type, or number..."
+        />
+        <!-- <button id="input-btn">
           <img
             src="https://m-aziz1.github.io/assets/pokemon/search-btn.png"
             alt="Search Button image"
           />
-        </button>
+        </button> -->
       </div>
 
       <div id="flex-container"></div>
@@ -32,8 +37,8 @@
 
     <template data-pokemon-template>
       <div class="card-container">
-        <img class="card-image" data-image />
-        <div class="card-info" data-info></div>
+        <img class="card-image draggable" data-image draggable="true" />
+        <div class="card-info draggable" data-info draggable="true"></div>
       </div>
     </template>
 
