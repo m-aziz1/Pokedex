@@ -114,10 +114,15 @@ h2 {
   display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
   :root {
-    --card-width: calc(175px * 0.9);
-    --card-height: calc(250px *0.9);
-    --info-height: calc(75px *0.9);
+    --card-width: calc(175px * 0.65);
+    --card-height: calc(250px *0.65);
+    --info-height: calc(75px *0.65);
+  }
+
+  .card-info p {
+    top: 8px;
+    font-size: 8px;
   }
 }
