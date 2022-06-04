@@ -12,6 +12,9 @@ html {
 :root {
   --main-bg-color: rgb(65, 65, 65);
   --accent-color: rgb(255, 166, 0);
+  --card-width: 175px;
+  --card-height: 250px;
+  --info-height: 75px;
 }
 
 #favourite-list {
@@ -60,27 +63,11 @@ h2 {
   height: 4vw;
   font-size: 2vw;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: var(--main-bg-color);;
+  color: var(--main-bg-color);
   background-color: white;
   border-radius: 0px;
   border: 0;
 }
-
-/* #input-btn {
-  position: relative;
-  top: 4.4vw;
-  right: 0;
-  border: 0;
-  padding: 0;
-  background-color: var(--accent-color);
-  margin-left: 1%;
-  cursor: pointer;
-  border-radius: 0px;
-}
-
-#input-btn img {
-  height: 3.5vw;
-} */
 
 /* Info Cards */
 #flex-container {
@@ -93,16 +80,16 @@ h2 {
 .card-container {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 175px;
-  height: 250px;
+  width: var(--card-width);
+  height: var(--card-height);
   background-color: whitesmoke;
   margin: 5px;
   cursor: pointer;
 }
 
 .card-image {
-  width: 175px;
-  height: 175px;
+  width: var(--card-width);
+  height: var(--card-width);
 }
 
 .card-container:hover {
@@ -110,19 +97,27 @@ h2 {
 }
 
 .card-info {
-  width: 175px;
-  height: 75px;
-  background-color: var(--main-bg-color);;
+  width: var(--card-width);
+  height: var(--info-height);
+  background-color: var(--main-bg-color);
   color: white;
   text-align: center;
 }
 
 .card-info p {
   position: relative;
-  top: 5px;
+  top: 12px;
   font-size: 14px;
 }
 
 .hide {
   display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  :root {
+    --card-width: calc(175px * 0.9);
+    --card-height: calc(250px *0.9);
+    --info-height: calc(75px *0.9);
+  }
 }
