@@ -10,10 +10,15 @@
   </head>
 
   <body>
-    <div id="favourite-list">
-      <h2>My List</h2>
-      <p>Drag and Drop</p>
+    <div id="sidebar">
+      <div id="list-text">
+        <h2>My List</h2>
+        <h3>Drag and Drop</p>
+      </div>
+        
+      <div id="favourite-list" class="drag-container"></div>
     </div>
+    
 
     <div id="content-body">
       <div id="header">
@@ -23,16 +28,15 @@
           placeholder="Search by name, type, or number..."
         />
       </div>
-
-      <div id="flex-container"></div>
+      <div id="flex-container" class="drag-container"></div>
     </div>
 
     <div class="more-info"></div>
 
     <template data-pokemon-template>
-      <div class="card-container">
-        <img class="card-image draggable" data-image draggable="true" />
-        <div class="card-info draggable" data-info draggable="true"></div>
+      <div class="card-container" draggable="true">
+        <img class="card-image" data-image draggable="false"/>
+        <div class="card-info" data-info></div>
       </div>
     </template>
 

@@ -1,5 +1,17 @@
 //POKEDEX
 
+//Favourites List Height
+const listDiv = document.getElementById("favourite-list");
+setHeightfromTop(listDiv);
+
+window.addEventListener("resize", () => {
+  setHeightfromTop(listDiv);
+});
+
+function setHeightfromTop(element) {
+  element.style.height = `${window.innerHeight - element.offsetTop}px`;
+}
+
 //DOCUMENT ELEMENTS
 const pokemonTemplate = document.querySelector("[data-pokemon-template]");
 const cardsContainer = document.getElementById("flex-container");
@@ -26,7 +38,14 @@ function datafromURL(address) {
           pokemon["name"]["english"]
         }<br/>${pokemon["type"].join(", ")}</p>`;
         card.addEventListener("click", () => alert(pokemon["name"]["english"]));
-        
+
+        card.addEventListener("dragstart", () => {
+          card.classList.add("dragging");
+        });
+        card.addEventListener("dragend", () => {
+          card.classList.remove("dragging");
+        });
+
         cardsContainer.appendChild(card);
 
         return {
@@ -37,6 +56,25 @@ function datafromURL(address) {
         };
       });
     });
+}
+
+//Drop Containers
+const containers = document.querySelectorAll(".drag-container");
+containers.forEach((container) => {
+  container.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    // const afterElement = getDragAfterElement(container, e.clientY);
+    const draggable = document.querySelector(".dragging");
+    container.appendChild(draggable);
+  });
+});
+
+function getDragAfterElement(container, y) {
+  const draggableElements = [
+    ...container.querySelectorAll("card-container:not(.dragging)"),
+  ];
+
+  draggableElements.reduce((closest, child) => {});
 }
 
 //Pad Numbers

@@ -17,7 +17,7 @@ html {
   --info-height: 75px;
 }
 
-#favourite-list {
+#sidebar {
   position: fixed;
   right: 0;
   top: 0;
@@ -28,6 +28,19 @@ html {
   text-align: center;
 }
 
+#favourite-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+#favourite-list .card-container {
+  transform: scale(0.7);
+  margin: -5%;
+}
+
 h2 {
   margin-top: 10px;
   color: var(--accent-color);
@@ -35,7 +48,7 @@ h2 {
   font-size: 3vw;
 }
 
-#favourite-list p {
+h3 {
   font-size: 1.5vw;
   color: lightgray;
 }
@@ -114,11 +127,15 @@ h2 {
   display: none;
 }
 
-@media only screen and (max-width: 550px) {
+.dragging {
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 500px) {
   :root {
     --card-width: calc(175px * 0.65);
-    --card-height: calc(250px *0.65);
-    --info-height: calc(75px *0.65);
+    --card-height: calc(250px * 0.65);
+    --info-height: calc(75px * 0.65);
   }
 
   .card-info p {
