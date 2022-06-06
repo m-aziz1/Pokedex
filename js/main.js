@@ -24,8 +24,10 @@ function datafromURL(address) {
   fetch(address)
     .then((rawData) => rawData.json())
     .then((data) => {
+      //create array of padded numbers
       let numbers = paddedNumberList(data, 3);
 
+      //clone and fill in HTML template for every pokemon
       cards = data.map((pokemon) => {
         const card = pokemonTemplate.content.cloneNode(true).children[0];
         const image = card.querySelector("[data-image]");
@@ -37,8 +39,11 @@ function datafromURL(address) {
         info.innerHTML = `<p>${numbers[pokemon["id"] - 1]}<br>${
           pokemon["name"]["english"]
         }<br/>${pokemon["type"].join(", ")}</p>`;
+
+        //replace this event listener with extra info div creation
         card.addEventListener("click", () => alert(pokemon["name"]["english"]));
 
+        //drag and drop
         card.addEventListener("dragstart", () => {
           card.classList.add("dragging");
         });
@@ -63,18 +68,33 @@ const containers = document.querySelectorAll(".drag-container");
 containers.forEach((container) => {
   container.addEventListener("dragover", (event) => {
     event.preventDefault();
-    // const afterElement = getDragAfterElement(container, e.clientY);
+    const afterElement = getDragAfterElement(container, event.clientY);
     const draggable = document.querySelector(".dragging");
-    container.appendChild(draggable);
+    if (afterElement == null) {
+      container.appendChild(draggable);
+    } else {
+      container.insertBefore(draggable, afterElement);
+    }
   });
 });
 
 function getDragAfterElement(container, y) {
   const draggableElements = [
-    ...container.querySelectorAll("card-container:not(.dragging)"),
+    ...container.querySelectorAll(".card-container:not(.dragging)"),
   ];
 
-  draggableElements.reduce((closest, child) => {});
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.POSITIVE_INFINITY }
+  ).element;
 }
 
 //Pad Numbers
@@ -93,15 +113,17 @@ function paddedNumberList(dataArray, placeValues) {
 }
 
 //Search Bar
+//call whenever input value changes
 const searchInput = document.getElementById("input-bar");
-searchInput.addEventListener("input", (text) => {
-  const value = text.target.value.toLowerCase();
-  console.log(cards[1]["type"]);
+searchInput.addEventListener("input", (event) => {
+  const value = event.target.value.toLowerCase();
   for (let i = 0; i < cards.length; i++) {
     const show =
       cards[i]["number"].includes(value) ||
       cards[i]["name"].includes(value) ||
       cards[i]["type"].includes(value);
+      
+      //if show != true
     cards[i]["element"].classList.toggle("hide", !show);
   }
 });

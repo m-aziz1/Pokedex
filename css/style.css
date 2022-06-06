@@ -1,14 +1,17 @@
+/* Apply to All */
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
+/* Background */
 html {
   background: url("../images/pokeball-wallpaper.jpg") no-repeat center fixed;
   background-size: cover;
   background-color: rgb(65, 65, 65);
 }
 
+/* Variables */
 :root {
   --main-bg-color: rgb(65, 65, 65);
   --accent-color: rgb(255, 166, 0);
@@ -16,6 +19,8 @@ html {
   --card-height: 250px;
   --info-height: 75px;
 }
+
+/* Favourites List */
 
 #sidebar {
   position: fixed;
@@ -29,9 +34,6 @@ html {
 }
 
 #favourite-list {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
   width: 100%;
   overflow-y: scroll;
 }
@@ -39,6 +41,8 @@ html {
 #favourite-list .card-container {
   transform: scale(0.7);
   margin: -5%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
@@ -53,7 +57,7 @@ h3 {
   color: lightgray;
 }
 
-/* Search Bar and Button */
+/* Main Body */
 #content-body {
   margin-top: 13.5vw;
   width: 80%;
@@ -68,6 +72,7 @@ h3 {
   top: 0;
 }
 
+/* Search Bar */
 #input-bar {
   position: relative;
   top: 3.4vw;
@@ -123,6 +128,7 @@ h3 {
   font-size: 14px;
 }
 
+/* Event Classes */
 .hide {
   display: none;
 }
@@ -131,7 +137,8 @@ h3 {
   opacity: 0.5;
 }
 
-@media only screen and (max-width: 500px) {
+/* Sizing for Smaller Screens */
+@media only screen and (max-width: 720px) {
   :root {
     --card-width: calc(175px * 0.65);
     --card-height: calc(250px * 0.65);
@@ -141,5 +148,9 @@ h3 {
   .card-info p {
     top: 8px;
     font-size: 8px;
+  }
+
+  #favourite-list .card-container {
+    transform: scale(0.6);
   }
 }
